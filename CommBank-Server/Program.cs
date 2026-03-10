@@ -17,7 +17,8 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Configuration.SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("Secrets.json");
+builder.Configuration.SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("Secrets.json", optional: true);
 
 var connectionString = builder.Configuration.GetConnectionString("CommBank");
 var mongoClientSettings = MongoClientSettings.FromConnectionString(connectionString);
